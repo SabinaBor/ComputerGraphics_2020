@@ -71,7 +71,7 @@ void MainView::initializeGL() {
     glEnable(GL_CULL_FACE);
 
     // Default is GL_LESS
-    glDepthFunc(GL_LEQUAL);
+    glDepthFunc(GL_ALWAYS);
 
     // Set the color to be used by glClear. This is, effectively, the background color.
     glClearColor(0.2f, 0.5f, 0.7f, 0.0f);
@@ -79,15 +79,35 @@ void MainView::initializeGL() {
     vertex A = createVertex(1.0, 1.0, 1.0, 0.0, 0.0, 1.0);
     vertex B = createVertex(1.0, 1.0, -1.0, 1.0, 0.0, 0.0);
     vertex C = createVertex(1.0, -1.0, 1.0, 0.0, 0.0, 1.0);
-    vertex D = createVertex(-1.0, 1.0, 1.0, 1.0, 0.0, 0.0);
-    vertex E = createVertex(1.0, -1.0, -1.0, 0.0, 0.0, 1.0);
-    vertex F = createVertex(-1.0, -1.0, 1.0, 0.0, 1.0, 0.0);
-    vertex G = createVertex(-1.0, -1.0, -1.0, 1.0, 0.0, 0.0);
-    vertex H = createVertex(-1.0, 1.0, -1.0, 1.0, 0.0, 0.0);
+    vertex D = createVertex(1.0, -1.0, -1.0, 1.0, 0.0, 0.0);
+    vertex E = createVertex(-1.0, 1.0, -1.0, 0.0, 0.0, 1.0);
+    vertex F = createVertex(-1.0, 1.0, 1.0, 0.0, 1.0, 0.0);
+    vertex G = createVertex(-1.0, -1.0, 1.0, 1.0, 0.0, 0.0);
+    vertex H = createVertex(-1.0, -1.0, -1.0, 1.0, 0.0, 0.0);
 
-    vertex cube[36] = {D, F, C, D, A, C, A, C, F, A, D, F,
-                       D, H, G, D, F, G, A, C, E, A, B, E,
-                       D, C, F, D, C, A, F, A, C, F, A, D
+    vertex cube[36] = {
+        //front
+        A,F,G,G,C,A,
+
+        //right
+        C,D,B,
+        B,A,C,
+
+        //back
+        E,B,D,
+        D,H,E,
+
+        //left
+        H,G,F,
+        F,E,H,
+
+        //down
+        C,G,H,H,D,C,
+
+        //up
+        B,E,F,F,A,B
+
+
                           };
 
     glGenBuffers(1, &vbo1);
@@ -109,8 +129,19 @@ void MainView::initializeGL() {
     vertex D1 = createVertex(-1.0, -1.0, -1.0, 1.0, 0.0, 0.0);
 
     vertex pyramid[18] = {
-          apex, C1, B1, apex, C1, A1, apex, A1, D1,
-          apex, B1, D1, apex, B1, C1, apex, A1, C1
+          //base
+          B1,D1,A1,A1,C1,B1,
+
+        //front
+        B1,C1,apex,
+
+        D1,B1,apex,
+
+        A1,D1,apex,
+
+        C1,A1,apex
+
+
     };
 
     glGenBuffers(1, &vbo2);
