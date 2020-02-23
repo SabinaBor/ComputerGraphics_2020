@@ -12,6 +12,8 @@ class Triangle: public Object
 
         virtual Hit intersect(Ray const &ray);
 
+        double const EPSILON = 0.00000001;
+
         Point v0;
         Point v1;
         Point v2;
