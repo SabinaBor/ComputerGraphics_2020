@@ -45,6 +45,7 @@ Hit Sphere::intersect(Ray const &ray) {
     double b = 2 * ray.D.dot(ray.O - position);
     double c = (ray.O - position).dot(ray.O - position) - pow(r, 2);
     double discriminant = pow(b, 2) - 4 * a * c;
+    if ((position - ray.O).dot(ray.D) <= 0) return Hit::NO_HIT();
     if (discriminant < 0) {
         return Hit::NO_HIT();
     } else if (discriminant == 0) {
@@ -52,10 +53,11 @@ Hit Sphere::intersect(Ray const &ray) {
     } else {
         t1 = (-b + sqrt(discriminant)) / 2 * a;
         t2 = (-b - sqrt(discriminant)) / 2 * a;
+        if (t1 < 0 && t2 < 0) { return Hit::NO_HIT(); }
         (t1 < 0) ? (t = t2) : ((t2 < 0) ? (t = t1) : (t = min(t1, t2)));
     }
-    Point ray1 = ray.O + t * ray.D;
-    Vector N = (ray1 - position).normalized();
+    Point ray1 = t * ray.D - (position - ray.O);
+    Vector N = ray1.normalized();
     return Hit(t, N);
 }
 
