@@ -23,21 +23,28 @@ Hit Triangle::intersect(Ray const &ray) {
     if (determinant < EPSILON && determinant > -EPSILON) // triangle and ray are parallel
         return Hit::NO_HIT();
 
-    indeterminant = 1 / determinant;
+    indeterminant = 1.0 / determinant;
     tvec = ray.O - v0;
     u = tvec.dot(pvec) * indeterminant;
-    if (u < 0 || u > 1) return Hit::NO_HIT();
+    if (u < 0.0 || u > 1.0) return Hit::NO_HIT();
 
     qvec = tvec.cross(v0v1);
-    v = ray.D.dot(qvec) * indeterminant;
+    v = (ray.D).dot(qvec) * indeterminant;
     if (v < 0 || u + v > 1) return Hit::NO_HIT();
 
     t = v0v2.dot(qvec) * indeterminant;
+    if (t > EPSILON) {
+        N = (v1 - v0).cross(v2 - v0);
+        N.normalize();
+        return Hit(t, N);
+    } else {
+        return Hit::NO_HIT();
+    }
 
-    Point ray1 = ray.O + t * ray.D;
-    Vector N = ray1.normalized();
-
-    return Hit(t, N);
+//    Point ray1 = ray.O + t * ray.D;
+//    Vector N = ray1.normalized();
+//
+//    return Hit(t, N);
 }
 
 Triangle::Triangle(Point const &v0,

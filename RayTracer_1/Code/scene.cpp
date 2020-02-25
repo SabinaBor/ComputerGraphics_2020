@@ -10,16 +10,13 @@
 
 using namespace std;
 
-Color Scene::trace(Ray const &ray)
-{
+Color Scene::trace(Ray const &ray) {
     // Find hit object and distance
     Hit min_hit(numeric_limits<double>::infinity(), Vector());
     ObjectPtr obj = nullptr;
-    for (unsigned idx = 0; idx != objects.size(); ++idx)
-    {
+    for (unsigned idx = 0; idx != objects.size(); ++idx) {
         Hit hit(objects[idx]->intersect(ray));
-        if (hit.t < min_hit.t)
-        {
+        if (hit.t < min_hit.t) {
             min_hit = hit;
             obj = objects[idx];
         }
@@ -52,6 +49,7 @@ Color Scene::trace(Ray const &ray)
     ****************************************************/
 
     Color color = material.color;               // placeholder
+    if (N.dot(V) < 0) { N *= -1; }
     traceColor(color, material, N, V, hit);
 
 
@@ -59,29 +57,22 @@ Color Scene::trace(Ray const &ray)
 }
 
 void Scene::traceColor(Color &color, Material material,
-                       Vector N, Vector V, Point hit){
+                       Vector N, Vector V, Point hit) {
     color *= material.ka;
-    for(LightPtr &light : lights){
-        Vector L = (light->position - hit).normalized();
-        Vector R = 2 * N.dot(L) * N - L;
-        double dot1 = L.dot(N), dot2 = R.dot(V);
-        if(dot1 > 0){
-            color += dot1 * material.color * light->color * material.kd;
-        }
-        if(dot2 > 0){
-            color += pow(dot2, material.n) * light->color * material.ks;
-        }
+    for (unsigned i = 0; i < lights.size(); i++) {
+        Vector L = (lights[i]->position - hit).normalized();
+        Vector R = (2 * N.dot(L) * N - L).normalized();
+        double dot1 = max(L.dot(N), 0.0), dot2 = max(R.dot(V), 0.0);
+        color += dot1 * material.color * lights[i]->color * material.kd;
+        color += pow(dot2, material.n) * lights[i]->color * material.ks;
     }
 }
 
-void Scene::render(Image &img)
-{
+void Scene::render(Image &img) {
     unsigned w = img.width();
     unsigned h = img.height();
-    for (unsigned y = 0; y < h; ++y)
-    {
-        for (unsigned x = 0; x < w; ++x)
-        {
+    for (unsigned y = 0; y < h; ++y) {
+        for (unsigned x = 0; x < w; ++x) {
             Point pixel(x + 0.5, h - 1 - y + 0.5, 0);
             Ray ray(eye, (pixel - eye).normalized());
             Color col = trace(ray);
@@ -93,27 +84,22 @@ void Scene::render(Image &img)
 
 // --- Misc functions ----------------------------------------------------------
 
-void Scene::addObject(ObjectPtr obj)
-{
+void Scene::addObject(ObjectPtr obj) {
     objects.push_back(obj);
 }
 
-void Scene::addLight(Light const &light)
-{
+void Scene::addLight(Light const &light) {
     lights.push_back(LightPtr(new Light(light)));
 }
 
-void Scene::setEye(Triple const &position)
-{
+void Scene::setEye(Triple const &position) {
     eye = position;
 }
 
-unsigned Scene::getNumObject()
-{
+unsigned Scene::getNumObject() {
     return objects.size();
 }
 
-unsigned Scene::getNumLights()
-{
+unsigned Scene::getNumLights() {
     return lights.size();
 }

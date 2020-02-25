@@ -4,6 +4,26 @@
 
 using namespace std;
 
+int solveQuadratic(const double &a, const double &b, const double &c, double &t1, double &t2) {
+    double ans;
+    double discriminant = pow(b, 2) - (4 * a * c);
+    if (discriminant < 0.0) return 0;
+    else if (discriminant == 0) {
+        t1 = t2 = -b / (2.0 * a);
+    } else {
+        if (b > 0) {
+            ans = -(b + sqrt(discriminant)) / (2.0 * a);
+        } else {
+            ans = -(b - sqrt(discriminant)) / (2.0 * a);
+        }
+        t1 = ans / a;
+        t2 = c / ans;
+    }
+    if (t1 > t2) swap(t1, t2);
+
+    return 1;
+}
+
 Hit Sphere::intersect(Ray const &ray) {
     /****************************************************
     * RT1.1: INTERSECTION CALCULATION
@@ -40,29 +60,26 @@ Hit Sphere::intersect(Ray const &ray) {
     ****************************************************/
 
     // Placeholder for actual intersection calculation.
+    Triple L = ray.O - position;
     double t, t1, t2;
-    double a = ray.D.dot(ray.D);
-    double b = 2 * ray.D.dot(ray.O - position);
-    double c = (ray.O - position).dot(ray.O - position) - pow(r, 2);
-    double discriminant = pow(b, 2) - 4 * a * c;
-    if ((position - ray.O).dot(ray.D) <= 0) return Hit::NO_HIT();
-    if (discriminant < 0) {
-        return Hit::NO_HIT();
-    } else if (discriminant == 0) {
-        t = -(b / 2 * a);
-    } else {
-        t1 = (-b + sqrt(discriminant)) / 2 * a;
-        t2 = (-b - sqrt(discriminant)) / 2 * a;
-        if (t1 < 0 && t2 < 0) { return Hit::NO_HIT(); }
-        (t1 < 0) ? (t = t2) : ((t2 < 0) ? (t = t1) : (t = min(t1, t2)));
+    double a = (ray.D).dot(ray.D);
+    double b = 2 * (ray.D).dot(L);
+    double c = L.dot(L) - pow(r, 2);
+    if (solveQuadratic(a, b, c, t1, t2) == 0) return Hit::NO_HIT();
+    if (t1 < 0) {
+        t1 = t2;
+        if (t1 < 0) {
+            return Hit::NO_HIT();
+        }
     }
-    Point ray1 = t * ray.D - (position - ray.O);
-    Vector N = ray1.normalized();
+    t = t1;
+    Point ray1 = ray.O + (ray.D * t);
+    Vector N = (ray1 - position).normalized();
     return Hit(t, N);
 }
 
-
-Sphere::Sphere(Point const &pos, double radius)
+Sphere::Sphere(Point const &pos, double
+radius)
         :
         position(pos),
         r(radius) {}
