@@ -1,0 +1,4 @@
+The changes that we made can be found under mainview.cpp, mainview.h and vertshader.glsl. 
+The difficulties that we encountered are mostly with the colouring of the cube and pyramid (setting all of it clockwise/counter clockwise properly).
+We used the functions setScale, setRotation, initializeGL, paintGL and a new function setModels for modifying the project.
+
