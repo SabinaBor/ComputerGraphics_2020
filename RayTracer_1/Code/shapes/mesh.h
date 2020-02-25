@@ -19,4 +19,5 @@ class Mesh: public Object
         virtual Hit intersect(Ray const &ray);
 };
 
+
 #endif
