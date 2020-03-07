@@ -89,19 +89,44 @@ Color Scene::trace(Ray const &ray, unsigned depth)
     {
         // The object is transparent, and thus refracts and reflects light.
         // Use Schlick's approximation to determine the ratio between the two.
-        double c1 = N.dot(ray.D);
-        double c2 = sqrt(1 - pow(material.nt,2)*(1-pow(c1,2)));
-        Vector T = (material.nt * ray.D) + (material.nt * c1 - c2) * N;
-        Ray refractShadow(epsHit, T);
         Vector R = reflect(ray.D, shadingN);
         Ray reflectShadow(epsHit, R);
-        Color reflectionColor = material.ks * trace(reflectShadow, depth-1);
-        Color refractionColor = material.ks * trace(refractShadow, depth-1);
-        double ni = 1.0;
-        double kr0 = pow( (ni-material.nt)/(ni+material.nt), 2 );
-        double kr = kr0 + (1.0 - kr0) * pow((1.0 - (-ray.D).dot(shadingN)), 5);
+        Color reflectionColor = material.ks * trace(reflectShadow, depth-1));
+        double cosi = N.dot(ray.D);
+        double etai = 1, etat = material.nt;
+        Color refractionColor;
+        Vector T;
+        Vector n = N;
+        if(cosi < 0.0){
+            cosi = -cosi;
+        } else {
+            swap(etai, etat);
+            n = -N;
+        }
+        double eta = etai/etat;
+        double k = 1 - pow(eta,2) * (1 - pow(cosi, 2));
+        if(k < 0){
+            T = Triple(0, 0, 0);
+        } else {
+            T = eta * ray.D + (eta * cosi - sqrt(k)) * n;
+        }
+        double sint = etai/etat * sqrt(max(0.0, 1 - pow(cosi, 2)));
+        double kr;
+        if(sint >= 1){
+            kr = 1;
+        } else {
+            double cost = sqrt(max(0.0, 1 - pow(sint, 2)));
+            cosi = fabs(cosi);
+            double Rs = ((etat * cosi) - (etai * cost)) / ((etat * cosi) + (etai * cost));
+            double Rp = ((etai * cosi) - (etat * cost)) / ((etai * cosi) + (etat * cost));
+            kr = (pow(Rs, 2) + pow(Rp, 2)) / 2;
+        }
+        bool outside = cosi<0;
+            Point refractionOrig = outside ? hit - epsilon * shadingN : hit + epsilon * shadingN;
+            Ray refractShadow(refractionOrig, T);
+            refractionColor = material.ks * trace(refractShadow, depth-1);
         double kt = 1.0 - kr;
-        color = reflectionColor * kr + refractionColor * kt;
+        color += reflectionColor * kr + refractionColor * kt;
     }
     else if (depth > 0 and material.ks > 0.0)
     {
@@ -130,6 +155,8 @@ void Scene::render(Image &img)
             img(x, y) = col;
         }
 }
+
+//void fresnel()
 
 // --- Misc functions ----------------------------------------------------------
 
