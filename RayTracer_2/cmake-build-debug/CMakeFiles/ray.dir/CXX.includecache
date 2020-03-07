@@ -1,0 +1,502 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/hit.h
+triple.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/triple.h
+limits
+-
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/image.cpp
+image.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/image.h
+lode/lodepng.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/lode/lodepng.h
+iostream
+-
+fstream
+-
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/image.h
+triple.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/triple.h
+string
+-
+vector
+-
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/json/json.h
+algorithm
+-
+cassert
+-
+ciso646
+-
+cstddef
+-
+functional
+-
+initializer_list
+-
+iosfwd
+-
+iterator
+-
+numeric
+-
+string
+-
+utility
+-
+cstdint
+-
+map
+-
+memory
+-
+string
+-
+vector
+-
+ciso646
+-
+cstddef
+-
+limits
+-
+type_traits
+-
+utility
+-
+exception
+-
+stdexcept
+-
+string
+-
+array
+-
+ciso646
+-
+cstddef
+-
+cstdint
+-
+algorithm
+-
+array
+-
+ciso646
+-
+forward_list
+-
+iterator
+-
+string
+-
+tuple
+-
+type_traits
+-
+utility
+-
+valarray
+-
+ciso646
+-
+iterator
+-
+tuple
+-
+type_traits
+-
+utility
+-
+valarray
+-
+vector
+-
+algorithm
+-
+array
+-
+cassert
+-
+cstddef
+-
+cstring
+-
+ios
+-
+istream
+-
+iterator
+-
+memory
+-
+numeric
+-
+string
+-
+type_traits
+-
+utility
+-
+clocale
+-
+cstddef
+-
+cstdlib
+-
+initializer_list
+-
+ios
+-
+iomanip
+-
+sstream
+-
+string
+-
+vector
+-
+cassert
+-
+cmath
+-
+cstdint
+-
+functional
+-
+string
+-
+utility
+-
+cstddef
+-
+limits
+-
+ciso646
+-
+iterator
+-
+type_traits
+-
+cstddef
+-
+string
+-
+cstddef
+-
+iterator
+-
+utility
+-
+algorithm
+-
+cstddef
+-
+ios
+-
+iterator
+-
+memory
+-
+ostream
+-
+string
+-
+vector
+-
+algorithm
+-
+array
+-
+cassert
+-
+cmath
+-
+cstddef
+-
+cstdint
+-
+cstring
+-
+iomanip
+-
+ios
+-
+iterator
+-
+limits
+-
+sstream
+-
+string
+-
+utility
+-
+algorithm
+-
+array
+-
+cstdint
+-
+cstring
+-
+limits
+-
+algorithm
+-
+array
+-
+cassert
+-
+ciso646
+-
+clocale
+-
+cmath
+-
+cstddef
+-
+cstdint
+-
+cstdio
+-
+iterator
+-
+limits
+-
+string
+-
+type_traits
+-
+cassert
+-
+ciso646
+-
+cmath
+-
+cstdint
+-
+cstring
+-
+initializer_list
+-
+utility
+-
+utility
+-
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/json/json_fwd.h
+cstdint
+-
+map
+-
+memory
+-
+string
+-
+vector
+-
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/light.h
+triple.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/triple.h
+memory
+-
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/lode/lodepng.cpp
+lodepng.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/lode/lodepng.h
+limits.h
+-
+stdio.h
+-
+stdlib.h
+-
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/lode/lodepng.h
+string.h
+-
+vector
+-
+string
+-
+lodepng.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/lode/lodepng.h
+iostream
+-
+lodepng.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/lode/lodepng.h
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/main.cpp
+raytracer.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/raytracer.h
+iostream
+-
+string
+-
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/material.h
+image.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/image.h
+triple.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/triple.h
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/object.h
+material.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/material.h
+hit.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/hit.h
+ray.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/ray.h
+triple.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/triple.h
+memory
+-
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/objloader.cpp
+objloader.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/objloader.h
+fstream
+-
+iostream
+-
+sstream
+-
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/objloader.h
+vertex.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/vertex.h
+string
+-
+vector
+-
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/ray.h
+triple.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/triple.h
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/raytracer.cpp
+raytracer.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/raytracer.h
+image.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/image.h
+light.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/light.h
+material.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/material.h
+triple.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/triple.h
+shapes/quad.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/shapes/quad.h
+shapes/sphere.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/shapes/sphere.h
+json/json.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/json/json.h
+exception
+-
+fstream
+-
+iostream
+-
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/raytracer.h
+scene.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/scene.h
+string
+-
+json/json_fwd.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/json/json_fwd.h
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/scene.cpp
+scene.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/scene.h
+hit.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/hit.h
+image.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/image.h
+material.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/material.h
+ray.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/ray.h
+algorithm
+-
+cmath
+-
+limits
+-
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/scene.h
+light.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/light.h
+object.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/object.h
+triple.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/triple.h
+vector
+-
+utility
+-
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/shapes/quad.cpp
+quad.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/shapes/quad.h
+cmath
+-
+limits
+-
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/shapes/quad.h
+../object.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/object.h
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/shapes/solvers.cpp
+solvers.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/shapes/solvers.h
+cmath
+-
+utility
+-
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/shapes/solvers.h
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/shapes/sphere.cpp
+sphere.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/shapes/sphere.h
+solvers.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/shapes/solvers.h
+cmath
+-
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/shapes/sphere.h
+../object.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/object.h
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/triple.cpp
+triple.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/triple.h
+json/json.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/json/json.h
+cmath
+-
+exception
+-
+iostream
+-
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/triple.h
+json/json_fwd.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/json/json_fwd.h
+iosfwd
+-
+
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/vertex.h
+

@@ -1,0 +1,3 @@
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/cmake-build-debug/CMakeFiles/ray.dir

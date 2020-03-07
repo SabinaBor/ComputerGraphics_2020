@@ -58,11 +58,20 @@ Color Scene::trace(Ray const &ray, unsigned depth)
 
     // Add ambient once, regardless of the number of lights.
     Color color = material.ka * matColor;
+    Point epsHit = epsilon * shadingN + hit;
 
     // Add diffuse and specular components.
     for (auto const &light : lights)
     {
         Vector L = (light->position - hit).normalized();
+
+        if (renderShadows) {
+            Vector shadowD = light->position - epsHit;
+            Ray shadow(epsHit, shadowD.normalized());
+            if (castRay(shadow).second.t < shadowD.length()) {
+                continue;
+            }
+        }
 
         // Add diffuse.
         double diffuse = std::max(shadingN.dot(L), 0.0);
@@ -80,10 +89,27 @@ Color Scene::trace(Ray const &ray, unsigned depth)
     {
         // The object is transparent, and thus refracts and reflects light.
         // Use Schlick's approximation to determine the ratio between the two.
+        double c1 = N.dot(ray.D);
+        double c2 = sqrt(1 - pow(material.nt,2)*(1-pow(c1,2)));
+        Vector T = (material.nt * ray.D) + (material.nt * c1 - c2) * N;
+        Ray refractShadow(epsHit, T);
+        Vector R = reflect(ray.D, shadingN);
+        Ray reflectShadow(epsHit, R);
+        Color reflectionColor = material.ks * trace(reflectShadow, depth-1);
+        Color refractionColor = material.ks * trace(refractShadow, depth-1);
+        double ni = 1.0;
+        double kr0 = pow( (ni-material.nt)/(ni+material.nt), 2 );
+        double kr = kr0 + (1.0 - kr0) * pow((1.0 - (-ray.D).dot(shadingN)), 5);
+        double kt = 1.0 - kr;
+        color = reflectionColor * kr + refractionColor * kt;
     }
     else if (depth > 0 and material.ks > 0.0)
     {
         // The object is not transparent, but opaque.
+        Vector R = reflect(ray.D, shadingN);
+        Ray reflectShadow(epsHit, R);
+        Color tmpColor = material.ks * trace(reflectShadow, depth-1);
+        color += tmpColor;
     }
 
     return color;
