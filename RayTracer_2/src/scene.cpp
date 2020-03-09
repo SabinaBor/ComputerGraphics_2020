@@ -4,6 +4,7 @@
 #include "image.h"
 #include "material.h"
 #include "ray.h"
+#include "sphere.h"
 
 #include <algorithm>
 #include <cmath>
@@ -39,10 +40,15 @@ Color Scene::trace(Ray const &ray, unsigned depth)
     if (!obj)
         return Color(0.0, 0.0, 0.0);
 
+
     Material const &material = obj->material;
     Point hit = ray.at(min_hit.t);
     Vector V = -ray.D;
 
+    if(material.hasTexture){
+        Vector uandv = toUV(hit);
+        material.texture.colorAt(uandv[0], 1.0-uandv[1]);
+    }
     // Pre-condition: For closed objects, N points outwards.
     Vector N = min_hit.N;
 
