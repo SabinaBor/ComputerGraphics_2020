@@ -4,7 +4,6 @@
 #include <cmath>
 
 using namespace std;
-
 Hit Sphere::intersect(Ray const &ray)
 {
     // Sphere formula: ||x - position||^2 = r^2
@@ -43,6 +42,9 @@ Vector Sphere::toUV(Point const &hit)
     // placeholders
     double u = 0.0;
     double v = 0.0;
+    
+    double u = 0.5 + atan2(hit.y,hit.x)/(2*PI);
+    double v = 1 - acos(hit.z/hit.r)/PI;
 
     // Use a Vector to return 2 doubles. The third value is never read.
     return Vector{u, v, 0.0};
