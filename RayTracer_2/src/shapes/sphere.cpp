@@ -39,15 +39,12 @@ Hit Sphere::intersect(Ray const &ray)
 
 Vector Sphere::toUV(Point const &hit)
 {
-    // placeholders
-    double u = 0.0;
-    double v = 0.0;
-    
-    double u = 0.5 + atan2(hit.y,hit.x)/(2*PI);
-    double v = 1 - acos(hit.z/hit.r)/PI;
+    double u, v;
+    u = 0.5 + atan2(hit.y - position.y, hit.x - position.x)/(2.0*PI);
+    v = 1 - acos((hit.z - position.z)/r)/PI;
 
     // Use a Vector to return 2 doubles. The third value is never read.
-    return Vector{u, v, 0.0};
+    return Vector(u, v, 0);
 }
 
 Sphere::Sphere(Point const &pos, double radius, Vector const& axis, double angle)
@@ -56,5 +53,8 @@ Sphere::Sphere(Point const &pos, double radius, Vector const& axis, double angle
     position(pos),
     r(radius),
     axis(axis),
-    angle(angle)
+    angle(angle),
+    is_rotated(true)
 {}
+
+

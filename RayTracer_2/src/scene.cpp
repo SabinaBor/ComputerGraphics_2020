@@ -4,7 +4,7 @@
 #include "image.h"
 #include "material.h"
 #include "ray.h"
-#include "sphere.h"
+#include "shapes/sphere.h"
 
 #include <algorithm>
 #include <cmath>
@@ -41,10 +41,6 @@ Color Scene::trace(Ray const &ray, unsigned depth) {
     Point hit = ray.at(min_hit.t);
     Vector V = -ray.D;
 
-    if(material.hasTexture){
-        Vector uandv = toUV(hit);
-        material.texture.colorAt(uandv[0], 1.0-uandv[1]);
-    }
     // Pre-condition: For closed objects, N points outwards.
     Vector N = min_hit.N;
 
@@ -56,11 +52,18 @@ Color Scene::trace(Ray const &ray, unsigned depth) {
     else
         shadingN = -N;
 
-    Color matColor = material.color;
+    Color matColor;
+
+    if(material.hasTexture){
+        Vector uandv = obj->toUV(hit);
+        matColor = material.texture.colorAt((float) uandv.x, (float) (1.0-uandv.y));
+    } else {
+        matColor = material.color;
+    }
 
     // Add ambient once, regardless of the number of lights.
     Color color = material.ka * matColor;
-    Point hit1 = hit + epsilon * shadingN, hit2 = hit - epsilon * shadingN;
+    Point hit1 = hit + epsilon * shadingN;
 
     // Add diffuse and specular components.
     for (auto const &light : lights) {
@@ -117,11 +120,19 @@ Color Scene::trace(Ray const &ray, unsigned depth) {
             kr = (pow(Rs, 2) + pow(Rp, 2)) / 2;
         }
         double kt = 1 - kr;
-        if ((kr < 1)&&(kt > 0)) {
-            Ray refractShadow(shadingN.normalized().dot(ray.D.normalized()) < 0 ? hit - (shadingN*epsilon).normalized() : hit + (shadingN*epsilon).normalized(), T.normalized());
+        if ((kr < 1) && (kt > 0)) {
+            Ray refractShadow(
+                    shadingN.normalized().dot(ray.D.normalized()) < 0 ? hit - (shadingN * epsilon).normalized() : hit +
+                                                                                                                  (shadingN *
+                                                                                                                   epsilon).normalized(),
+                    T.normalized());
             refractionColor = trace(refractShadow, depth - 1);
         }
-        Ray reflectShadow(shadingN.normalized().dot(ray.D.normalized()) < 0 ? hit + (shadingN*epsilon).normalized() : hit - (shadingN*epsilon).normalized(), R.normalized());
+        Ray reflectShadow(
+                shadingN.normalized().dot(ray.D.normalized()) < 0 ? hit + (shadingN * epsilon).normalized() : hit -
+                                                                                                              (shadingN *
+                                                                                                               epsilon).normalized(),
+                R.normalized());
         reflectionColor = trace(reflectShadow, depth - 1);
         color += reflectionColor * kr + refractionColor * kt;
     } else if (depth > 0 and material.ks > 0.0) {
@@ -138,15 +149,25 @@ Color Scene::trace(Ray const &ray, unsigned depth) {
 void Scene::render(Image &img) {
     unsigned w = img.width();
     unsigned h = img.height();
+    double i, j;
 
-    for (unsigned y = 0; y < h; ++y)
+    for (unsigned y = 0; y < h; ++y) {
         for (unsigned x = 0; x < w; ++x) {
-            Point pixel(x + 0.5, h - 1 - y + 0.5, 0);
-            Ray ray(eye, (pixel - eye).normalized());
-            Color col = trace(ray, recursionDepth);
-            col.clamp();
-            img(x, y) = col;
+            Color color(0, 0, 0);
+            double step = 1.0 / supersamplingFactor;
+            double half_step = step / 2;
+            for (i = half_step; i < 1; i += step) {
+                for (j = half_step; j < 1; j += step) {
+                    Point pixel(x + i, h - 1 - y + j, 0);
+                    Ray ray(eye, (pixel - eye).normalized());
+                    color += trace(ray, recursionDepth);
+                }
+            }
+            color /= pow(supersamplingFactor, 2);
+            color.clamp();
+            img(x, y) = color;
         }
+    }
 }
 
 //void fresnel()

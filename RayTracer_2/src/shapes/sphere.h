@@ -11,6 +11,7 @@ class Sphere: public Object
         Sphere(Point const &pos, double radius,
                Vector const& axis = Vector(0.0, 1.0, 0.0), double angle = 0.0);
 
+
         Hit intersect(Ray const &ray) override;
         Vector toUV(Point const &hit) override;
 
@@ -18,6 +19,8 @@ class Sphere: public Object
         double const r;
         Vector const axis;
         double const angle;
+        bool is_rotated = false;
+
 };
 
 #endif

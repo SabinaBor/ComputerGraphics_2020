@@ -16,12 +16,9 @@
             "comment": "Earth sphere",
             "position": [200, 200, 400],
             "radius": 80,
-            "angle": 90,
-            "axis": [0, 0, 1],
-            "hasTexture": true,
             "material":
             {
-                "texture": "../textures/earthmap1k.png",
+                "texture": "../textures/bluegrid.png",
                 "ka": 0.2,
                 "kd": 0.8,
                 "ks": 0.0,

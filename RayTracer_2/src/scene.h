@@ -27,6 +27,7 @@ class Scene
     // floating point inaccuracies. This prevents shadow acne, among other problems.
     double const epsilon = 1E-3;
 
+
     public:
         Scene();
 

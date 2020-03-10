@@ -427,6 +427,8 @@ material.h
 /Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/material.h
 ray.h
 /Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/ray.h
+shapes/sphere.h
+/Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/shapes/sphere.h
 algorithm
 -
 cmath

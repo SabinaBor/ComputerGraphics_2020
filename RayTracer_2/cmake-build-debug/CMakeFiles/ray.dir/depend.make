@@ -50,6 +50,7 @@ CMakeFiles/ray.dir/src/scene.cpp.o: ../src/object.h
 CMakeFiles/ray.dir/src/scene.cpp.o: ../src/ray.h
 CMakeFiles/ray.dir/src/scene.cpp.o: ../src/scene.cpp
 CMakeFiles/ray.dir/src/scene.cpp.o: ../src/scene.h
+CMakeFiles/ray.dir/src/scene.cpp.o: ../src/shapes/sphere.h
 CMakeFiles/ray.dir/src/scene.cpp.o: ../src/triple.h
 
 CMakeFiles/ray.dir/src/shapes/quad.cpp.o: ../src/hit.h

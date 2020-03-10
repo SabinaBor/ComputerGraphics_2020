@@ -51,6 +51,7 @@ CMakeFiles/ray.dir/src/scene.cpp.o
  /Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/ray.h
  /Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/scene.cpp
  /Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/scene.h
+ /Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/shapes/sphere.h
  /Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/triple.h
 CMakeFiles/ray.dir/src/shapes/quad.cpp.o
  /Users/Sabina/Desktop/Courses/Computer Graphics/ComputerGraphics_2020/RayTracer_2/src/hit.h
