@@ -1,0 +1,11 @@
+Authors: Sabina Boranbayeva (s3273326) and ALex Gabor (s3787664)
+
+It has been decided to use the code from the last assignment OpenGL due to the wrong position of the MainWindow in OpenGL3. Therefore:
+
+Files modified: mainview.cpp, mainview.h, fragshader_phong.glsl, vertshader_phong.glsl
+
+Files added: mercurymap.jpg, earthmap.png, grid.obj, jupitermap.jpg
+
+To minimize code duplication, we have decided to use arrays.
+In our program we created 4 different objects, which are 3 spheres of different size and 1 cat. It demonstrates three planets and alien cat. Transformations applied: translation and rotation. Earth and mercury rotate aroung themselves, jupiter and cat rotate around the Earth. 
+

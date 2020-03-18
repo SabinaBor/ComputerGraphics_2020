@@ -1,8 +1,0 @@
-Authors: Sabina Boranbayeva (s3273326) and ALex Gabor (s3787664)
-
-
-Files modified: mainview.cpp, mainview.h
-
-Files added: fragshader_gouraud.glsl, fragshader_phong.glsl, fragshader_normal.glsl, vertshader_gouraud.glsl, vertshader_phong.glsl, vertshader_normal.glsl.
-
-If textures are not visible, change function texture() to texture2D() in fragshader_gouraud.glsl and fragshader_phong.glsl
