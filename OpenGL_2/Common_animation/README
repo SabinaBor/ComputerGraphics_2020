@@ -9,3 +9,6 @@ Files added: mercurymap.jpg, earthmap.png, grid.obj, jupitermap.jpg
 To minimize code duplication, we have decided to use arrays.
 In our program we created 4 different objects, which are 3 spheres of different size and 1 cat. It demonstrates three planets and alien cat. Transformations applied: translation and rotation. Earth and mercury rotate aroung themselves, jupiter and cat rotate around the Earth. 
 
+The Water sub-assignment has not been implemented
+
+
